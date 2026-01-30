@@ -1,5 +1,5 @@
-# Travaux réalisé lors du module principes de programmations
-Objectif : 
+# Ce repertoire retiendras les travaux réalisés lors du module principes de programmations  
+À terme, l'auteur de ce repertoire maitrisera les compétences techniques et les thématiques citées : 
 - Comprendre les microservices et les API REST  
 - Developper une application avec Spring Boot
 - Conteneurisé une application avec  Docker
