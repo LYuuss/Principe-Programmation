@@ -1,6 +1,14 @@
 # Service Web - Introduction à l'API Rest, initialisation d'une app via Flask  
   
-Implémentation de deux applications via Flask en python mettant en oeuvre les fonctionnalité 
+Implémentation de deux applications via Flask en python mettant en oeuvre une relation clients-serveur (e.g. ajouté un étudiant à la base de données, modifié son age ...)
 
-Fonctionnalité vu:
-- (22/07) GET, POST, DELETE, PUT
+Fonctionnalité présente:
+- (22/07) GET, POST, DELETE, PUT  
+  
+# Outils  
+- Postman  
+- Python 3.12
+- packages :  
+    - Flask  
+    - jsonify  
+    - request

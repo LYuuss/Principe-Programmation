@@ -3,6 +3,7 @@ Mise en oeuvre d'une simple application impliquant un serveur répondant à des 
 
 # Outils utilisé :  
 - IntelliJ
+- Postman  
 - Java 1.8  
 - packages :  
     - javax.xml.ws.Endpoint;  
