@@ -3,7 +3,7 @@
 //post config
 require_once "config/config.php";
 
-$url = API_BASE_URL . "/offers/universalBasket";
+$url = API_BASE_URL . "/offers";
 $response = file_get_contents($url);
 $basket = json_decode($response, true);
 

@@ -1,6 +1,6 @@
 <?php
 
-$url = "http://127.0.0.1:5000/offers/universalBasket";
+$url = "http://127.0.0.1:5000/offers";
 $response = file_get_contents($url);
 $basket = json_decode($response, true);
 

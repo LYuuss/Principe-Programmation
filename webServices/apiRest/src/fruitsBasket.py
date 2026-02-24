@@ -39,19 +39,30 @@ printemps_panier_fruit = [
 
 database_basket["springBasket"] = printemps_panier_fruit
 
+database_fruit = {}
+
+for basket_name, fruits in database_basket.items():
+    for fruit in fruits:
+        name = fruit["name"]                 
+        database_fruit[name] = fruit         
+
+
 database_names = list(database_basket.keys())
-s1 = "La variété de paniers sont consultable en ajoutant '/nom_du_panier' au chemin actuelle. \n"
-s2 = "Les différents noms de paniers sont : " + str(database_names)
+s = "<br>Vous êtes chez le primeurs, nous proposons une variété de panier. </br>\n"
+s1 = "<br>Cette variété peut être récupéré en ajoutant '/offers' au chemin actuelle.</br>\n"
+s2 = "<br>Les différents noms de paniers sont : " + str(database_names) + " </br>\n"
+s3 = "<br>Liste de tout les fruits que nous utilisons sont recuperable en ajoutant /fruits au chemin actuelle </br>\n"
+
 
 @app.route("/")
 
 def home():
-    return "Vous êtes chez le primeurs, ajouter '/offers' pour consulter le catalogue de panier proposé\n"
-
+    
+    return s + s1 + s2
 # instruction pour consulter les paniers
 @app.route("/offers", methods=["GET"])
 def show_offer():
-    return s1 + s2
+    return jsonify([{"name":b_name} for b_name in database_names])
 
 # Affiche panier selon nom
 @app.route("/offers/<string:name>", methods=["GET"])
@@ -60,6 +71,10 @@ def show_basket(name):
         return "Error aucun panier ne porte ce nom"
     return database_basket[name]
 
+#Affiche la totalité des fruits
+@app.route("/fruits", methods=["GET"])
+def show_fruits():
+    return database_fruit
 # Activer mode Debug pour voir les erreurs et recharger automatiquement le serveur 
 if __name__ == '__main__':
     app.run(debug=True)

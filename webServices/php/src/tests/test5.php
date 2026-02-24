@@ -4,4 +4,6 @@
 require_once "config/config.php";
 require_once "services/BasketService.php";
 
-$basket = BasketService::getAllBasket
+$basket = BasketService::getAllBasket();
+
+echo $basket;
