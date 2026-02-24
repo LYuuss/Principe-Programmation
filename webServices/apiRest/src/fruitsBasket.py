@@ -75,6 +75,10 @@ def show_basket(name):
 @app.route("/fruits", methods=["GET"])
 def show_fruits():
     return database_fruit
+
+# todo -- Fonctionnalité creer un panier de fruit personnalisé avec suppression/modification 
+
+
 # Activer mode Debug pour voir les erreurs et recharger automatiquement le serveur 
 if __name__ == '__main__':
     app.run(debug=True)

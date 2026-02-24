@@ -1,9 +1,12 @@
 <?php
 
 //post class BasketService
-require_once "config/config.php";
-require_once "services/BasketService.php";
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../services/BasketService.php';
 
-$basket = BasketService::getAllBasket();
+$names_baskets = BasketService::getAllBasket();
 
-echo $basket;
+foreach($names_baskets as $basket) 
+{
+    echo $basket["name"] , "\n";
+}
