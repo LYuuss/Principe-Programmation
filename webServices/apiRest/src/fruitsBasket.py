@@ -9,7 +9,7 @@ app = Flask(__name__)
 database_basket = {}
 
 #liste qui contiendra les paniers perso fait par les clients
-database_client_basket = {}
+database_custom_basket = {}
 
 universal_panier_fruit = [
     {"name":"apple", "color":"green", "from":"Spain"},
@@ -79,12 +79,23 @@ def show_basket(name):
 def show_fruits():
     return database_fruit
 
+@app.route("/customs", methods=["GET"])
+def show_customs():
+    return database_custom_basket
+
 # todo -- Fonctionnalité creer un panier de fruit personnalisé avec suppression/modification 
-@app.route("/offers/customBasket/<string:name>", methods=["POST"])
+
+@app.route("/customs/addCustomBasket", methods=["POST"])
 def create_basket():
-    if database_client_basket[name]:
+    new_basket = request.get_json()
+    if new_basket[name] in database_custom_basket[name]:
         return "Error un panier portant ce nom existe deja"
-    new_basket = {}
+    database_custom_basket[new_basket[name]] = new_basket
+
+    return jsonify(new_basket), 201
+
+@app.route("/custom/", methods=["DELETE"])
+def remove_basket():
     return
 
 
