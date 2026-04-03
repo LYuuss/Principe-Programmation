@@ -20,15 +20,15 @@ def get_student_by_id(student_id):
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
 
-    query = f"SELECT * FROM students WHERE id = {s}"
+    query = f"SELECT * FROM students WHERE id = {student_id}"
     cursor.execute(query, (student_id,))
 
-    student = cursor.fetchone()
+    stud = cursor.fetchone()
 
     cursor.close()
     conn.close()
 
-    return student
+    return stud
 
 def add_student(table, prenom, age):
     conn = get_connection()
