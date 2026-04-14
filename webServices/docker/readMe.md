@@ -98,6 +98,22 @@ Docker fait tout ça automatiquement
 - EXPOSE : documenter le port exposé 
 - CMD / ENTRYPOINT : commande lancé au demarrage du conteneur
 
+## Docker Compose
+
+Docker Compose permet de **gérer plusieurs conteneurs en même temps** à l’aide d’un seul fichier de configuration.
+
+👉 Au lieu de lancer plusieurs commandes `docker run`, on décrit toute l’architecture dans un fichier `docker-compose.yml`.
+
+---
+
+### Pourquoi utiliser Docker Compose ?
+
+- Lancer plusieurs services facilement  
+- Centraliser la configuration  
+- Gérer automatiquement les réseaux  
+- Simplifier le développement et le déploiement  
+
+---
 
 ## Résumé
 
@@ -120,4 +136,34 @@ docker run -d \
   -e MYSQL_ROOT_PASSWORD=pass \
   -v mysql_data:/var/lib/mysql \
   -p 3306:3306 \
-  mysql:8
+  mysql:8  
+```
+
+
+## Exemple de fichier `docker-compose.yml`
+
+```yaml
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  site:
+    image: nginx
+    container_name: site
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:  
+``````
